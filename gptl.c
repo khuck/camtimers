@@ -647,6 +647,10 @@ int GPTLfinalize (void)
   return 0;
 }
 
+void GPTLdump (void) {
+  PERFSTUBS_DUMP_DATA();
+}
+
 /*
 ** GPTLprefix_set: define prefix for subsequent timer names
 **

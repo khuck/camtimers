@@ -134,6 +134,8 @@ extern int GPTLprefix_set (const char *);
 extern int GPTLprefix_setf (const char *, const int);
 extern int GPTLprefix_unset (void);
 extern int GPTLstart (const char *);
+#define HAVE_GPTLdump
+extern void GPTLdump ();
 extern int GPTLstart_handle (const char *, void **);
 extern int GPTLstartf (const char *, const int);
 extern int GPTLstartf_virtual (const char *, int *, const int);
