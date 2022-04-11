@@ -293,10 +293,11 @@ END SUBROUTINE shr_mpi_barrier
 
 SUBROUTINE shr_mpi_bcasti0(vec,comm,string)
 
+   use, intrinsic :: ISO_C_BINDING, only: c_loc
    IMPLICIT none
 
    !----- arguments ---
-   integer(SHR_KIND_IN), intent(inout):: vec      ! vector of 1
+   integer(SHR_KIND_IN), intent(inout), TARGET :: vec      ! vector of 1
    integer(SHR_KIND_IN), intent(in)   :: comm     ! mpi communicator
    character(*),optional,intent(in)   :: string   ! message
 
@@ -313,7 +314,7 @@ SUBROUTINE shr_mpi_bcasti0(vec,comm,string)
 
    lsize = 1
 
-   call MPI_BCAST(vec,lsize,MPI_INTEGER,0,comm,ierr)
+   call MPI_BCAST(C_LOC(vec),lsize,MPI_INTEGER,0,comm,ierr)
    if (present(string)) then
      call shr_mpi_chkerr(ierr,subName//trim(string))
    else
@@ -329,10 +330,11 @@ END SUBROUTINE shr_mpi_bcasti0
 
 SUBROUTINE shr_mpi_bcastl0(vec,comm,string)
 
+   use, intrinsic :: ISO_C_BINDING, only: c_loc
    IMPLICIT none
 
    !----- arguments ---
-   logical, intent(inout):: vec      ! vector of 1
+   logical, intent(inout), TARGET :: vec      ! vector of 1
    integer(SHR_KIND_IN), intent(in)   :: comm     ! mpi communicator
    character(*),optional,intent(in)   :: string   ! message
 
@@ -349,7 +351,7 @@ SUBROUTINE shr_mpi_bcastl0(vec,comm,string)
 
    lsize = 1
 
-   call MPI_BCAST(vec,lsize,MPI_LOGICAL,0,comm,ierr)
+   call MPI_BCAST(C_LOC(vec),lsize,MPI_LOGICAL,0,comm,ierr)
    if (present(string)) then
      call shr_mpi_chkerr(ierr,subName//trim(string))
    else

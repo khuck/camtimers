@@ -4,18 +4,6 @@ cmake_minimum_required(VERSION 3.12)
 project(Camtimers)
 enable_language(C Fortran)
 
-if (CMAKE_Fortran_COMPILER_ID STREQUAL "GNU")
-  include(CheckFortranCompilerFlag)
-  check_fortran_compiler_flag("-Wno-argument-mismatch" _flag)
-  if (_flag)
-    set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} ${_flag}")
-  else()
-    check_fortran_compiler_flag("-fallow-argument-mismatch" _flag)
-    if (_flag)
-        set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} ${_flag}")
-    endif()
-  endif()
-endif()
 
 # If using the cray fortran wrapper, force lowercase module names
 if (CMAKE_Fortran_COMPILER_ID STREQUAL "Cray")
@@ -23,7 +11,7 @@ if (CMAKE_Fortran_COMPILER_ID STREQUAL "Cray")
 endif()
 
 #set (CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -Wall")
-set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
+set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
 
 # Allow the user to disable MPI support
 option(CAMTIMERS_USE_MPI "Build camtimers with MPI" ON)
