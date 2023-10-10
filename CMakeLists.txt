@@ -12,6 +12,7 @@ endif()
 
 #set (CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -Wall")
 set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
+add_definitions(-D_GNU_SOURCE)
 
 # Allow the user to disable MPI support
 option(CAMTIMERS_USE_MPI "Build camtimers with MPI" ON)
