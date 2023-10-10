@@ -27,7 +27,7 @@ if(NOT EXISTS "${PROJECT_SOURCE_DIR}/perfstubs/CMakeLists.txt")
 include(cmake/GitUtils.cmake)
 git_clone(
         PROJECT_NAME    perfstubs
-        GIT_URL         https://github.com/khuck/perfstubs.git
+        GIT_URL         https://github.com/UO-OACISS/perfstubs.git
         GIT_BRANCH      master
         DIRECTORY       ${PROJECT_SOURCE_DIR}
 )
